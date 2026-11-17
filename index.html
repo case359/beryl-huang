@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看懂人｜Beryl 識人決策學｜社會大學・人生必修課 101</title>
+<meta name="description" content="看錯一個人，可能比做錯一個決策更貴。行為側寫 × 肢體語言 × 筆跡行為觀察，台灣實體一日工作坊。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#151e29; --dark2:#1c2735; --dark3:#243142;
+    --cream:#f6f1e7; --cream2:#efe6d6; --paper:#fbf8f2;
+    --gold:#c9a463; --gold2:#e2c891; --gold-d:#9c7a3e;
+    --ink:#2a241e; --muted:#7a6f62; --line:rgba(201,164,99,.35);
+    --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.8;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1120px,90%);margin:0 auto}
+  .serif{font-family:var(--serif)}
+  .eyebrow{font-family:var(--serif);letter-spacing:.25em;font-size:.78rem;color:var(--gold-d);text-transform:uppercase}
+  .dark .eyebrow{color:var(--gold)}
+  h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.5;margin:.4rem 0 1rem}
+  section{padding:90px 0}
+  .dark{background:var(--dark);color:#eee5d6}
+  .cream{background:var(--cream)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2rem;font-family:var(--serif);font-weight:700;letter-spacing:.15em;border-radius:4px;transition:.25s;cursor:pointer;border:none;font-size:1rem}
+  .btn-gold{background:linear-gradient(180deg,#ecd29b,#c9a463 60%,#b48c4b);color:#3a2c18;box-shadow:0 6px 20px rgba(201,164,99,.3)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,164,99,.45)}
+  .btn-dark{background:var(--dark);color:#f3e9d6}
+  .btn-dark:hover{background:#000}
+  .btn-ended{background:rgba(255,255,255,.08);color:#8f8a80;border:1px solid rgba(255,255,255,.15);cursor:not-allowed;box-shadow:none}
+  .btn-line{background:#06c755;color:#fff;font-family:var(--sans);letter-spacing:.05em}
+  .line-tag{background:#fff;color:#06c755;font-weight:800;font-size:.7rem;padding:.1rem .35rem;border-radius:3px}
+
+  /* NAV */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .35s,border-color .35s,backdrop-filter .35s}
+  header.scrolled{background:rgba(21,30,41,.9);backdrop-filter:blur(8px);border-bottom-color:rgba(201,164,99,.2)}
+  header .logo,header .menu a{text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:.9rem;color:#f0e4cc}
+  .logo-mark{font-family:var(--serif);font-size:1.6rem;color:var(--gold);line-height:1;padding-right:.9rem;border-right:1px solid var(--line)}
+  .logo-text b{display:block;font-family:var(--serif);letter-spacing:.2em;font-size:1rem}
+  .logo-text small{font-family:var(--serif);font-size:.7rem;color:#bba98a;letter-spacing:.05em}
+  .menu{display:flex;gap:0;list-style:none}
+  .menu a{color:#e3d6bd;font-size:.88rem;padding:0 1.1rem;border-left:1px solid rgba(201,164,99,.25);transition:.2s}
+  .menu li:first-child a{border-left:none}
+  .menu a:hover{color:var(--gold2)}
+  .burger{display:none;background:none;border:none;color:#eee;font-size:1.6rem;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;color:#f5ecdc;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 70% 40%,rgba(60,85,115,.35),transparent 60%),
+    linear-gradient(90deg,#111922 0%,#151e29 55%,#121a24 100%)}
+  .hero-photo{position:absolute;top:0;bottom:0;left:0;right:50%;
+  background:url("images/hero.jpg") center top/cover no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 65%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 65%,transparent 100%)}
+  .hero-photo .ph{position:absolute;left:45%;bottom:40px;font-size:.8rem;color:rgba(255,255,255,.25);border:1px dashed rgba(255,255,255,.2);padding:1rem 1.4rem;text-align:center}
+  .hero-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+  .hero-inner{width:100%}
+  .hero-text{grid-column:2;justify-self:center;padding:0 6%;max-width:680px}
+  .badge{display:inline-block;border:1px solid var(--gold);border-radius:999px;padding:.3rem 1.2rem;font-family:var(--serif);font-size:.85rem;letter-spacing:.2em;color:#ead9b5}
+  .hero .course{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);margin:1.2rem 0 .2rem;letter-spacing:.05em}
+  .hero .sub{color:#c9b998;letter-spacing:.2em;font-size:.95rem}
+  .hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.4;margin:1.6rem 0 .8rem;letter-spacing:.04em}
+  .hero .lead{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);color:#e3d5ba;letter-spacing:.1em}
+  .hero .tags{margin:.8rem 0 .4rem;font-family:var(--serif);font-weight:700;letter-spacing:.12em;font-size:clamp(1.1rem,1.8vw,1.4rem)}
+  .hero .tags span{color:var(--gold);margin:0 .5rem}
+  .hero .tags-sub{color:#e3d5ba;letter-spacing:.1em;font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem)}
+  .hero-cta{display:flex;align-items:center;gap:1.6rem;margin-top:2.2rem;flex-wrap:wrap}
+  .hero-date{font-family:var(--serif);letter-spacing:.15em;color:#e2d3b6}
+  .signature{grid-column:1;grid-row:1;justify-self:end;align-self:end;text-align:right;padding-right:8%;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+  .signature .quote{font-family:var(--serif);color:#e8dcc4;letter-spacing:.15em;line-height:2.2;font-size:.95rem}
+  .signature .sig{display:block;font-family:var(--serif);font-size:1.8rem;color:var(--gold2);line-height:1;margin-top:2.2rem}
+  .signature .name{font-family:var(--serif);font-weight:600;font-size:1rem;margin-top:.6rem}
+  .signature .title{font-size:.8rem;color:#cbbb9b;letter-spacing:.2em}
+  .hero h1{font-size:clamp(1.8rem,3vw,2.6rem)}
+
+  /* STATS */
+  .stats{background:var(--cream2);padding:0;border-top:3px solid var(--gold)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{display:flex;gap:1rem;align-items:center;padding:1.6rem 1.2rem;border-left:1px solid rgba(156,122,62,.25)}
+  .stat:first-child{border-left:none}
+  .stat svg{flex:none;width:34px;height:34px;stroke:var(--ink);fill:none;stroke-width:1.5}
+  .stat b{font-family:var(--serif);font-size:1.15rem;display:block;line-height:1.3}
+  .stat small{color:var(--muted);font-size:.78rem}
+
+  /* PAIN */
+  .pain .grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .pain p{color:#4b4238}
+  .pain .scenes{margin-top:1.6rem;display:grid;gap:.9rem}
+  .scene{background:#fff;border-left:3px solid var(--gold);padding:.9rem 1.2rem;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .scene b{font-family:var(--serif);color:var(--gold-d);margin-right:.6rem}
+  .pain-visual{position:relative;aspect-ratio:4/5;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.75)),url("images/chess.jpg") center/cover;border-radius:4px;overflow:hidden;display:flex;align-items:flex-end;padding:2rem}
+  .pain-visual blockquote{position:relative;font-family:var(--serif);color:#efe3cb;font-size:1.25rem;line-height:2;letter-spacing:.12em;border-left:2px solid var(--gold);padding-left:1.2rem}
+
+  /* LINE */
+  .line-sec .box{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center}
+  .qr-card{background:#fff;border:1px solid var(--line);padding:2rem;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+  .qr{width:170px;height:170px;margin:1rem auto}
+  .qr img{width:100%;height:100%;object-fit:contain}
+  .qr-card h3{font-family:var(--serif);font-size:1.2rem}
+
+  /* INSTRUCTOR */
+  .teacher .grid{display:grid;grid-template-columns:.9fr 1.4fr;gap:3.5rem;align-items:center}
+  .teacher-photo{aspect-ratio:3/4;background:url("images/teacher.jpg") center/cover,linear-gradient(160deg,#3a3027,#1a1512);border:1px solid var(--line);position:relative}
+  .teacher-photo span{position:absolute;inset:auto 0 1rem 0;text-align:center;font-size:.8rem;color:rgba(255,255,255,.3)}
+  .teacher h3{font-family:var(--serif);font-size:1.9rem;font-weight:600}
+  .teacher h3 small{font-size:1.1rem;color:var(--gold2);margin-left:.6rem}
+  .teacher .role{color:var(--gold);letter-spacing:.2em;font-size:.9rem;margin-bottom:1.4rem}
+  .teacher p{color:#d6cab4;margin-bottom:1rem}
+  .creds{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem}
+  .cred{border:1px solid rgba(201,164,99,.3);padding:1rem 1.2rem}
+  .cred b{font-family:var(--serif);color:var(--gold2);display:block}
+  .cred small{color:#b8aa91}
+  .teacher .sig{font-family:var(--serif);font-size:1.6rem;color:var(--gold);margin-top:1rem}
+
+  /* VIDEO */
+  .video-box{aspect-ratio:16/9;max-width:860px;margin:2rem auto 0;background:#000;border:1px solid var(--line)}
+  .video-box iframe{width:100%;height:100%;border:0}
+
+  /* FEEDBACK */
+  .fb-sec{background:#e9e5dc}
+  .fb-sub{font-size:.85rem;color:#5b5147}
+  .fb-btn{background:#151e29;color:#f3ede2;padding:.85rem 1.3rem;border-radius:3px;font-size:.88rem;font-weight:700;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:.2s}
+  .fb-btn:hover{background:#0d141c}
+  .fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.4rem}
+  .fb{background:#f5f1e9;border:1px solid rgba(0,0,0,.1);padding:1.6rem 1.5rem 1.4rem;position:relative}
+  .fb::after{content:"“";position:absolute;right:1.2rem;top:.6rem;font-family:var(--serif);font-size:2.8rem;line-height:1;color:#c7b48e}
+  .fb p{font-family:var(--serif);font-size:1rem;line-height:1.9;color:var(--ink);margin-right:2rem}
+  .fb b{display:block;margin-top:1rem;font-size:.82rem;color:var(--ink)}
+  .fb small{display:block;margin-top:.3rem;font-size:.7rem;color:var(--muted)}
+  .fb-note{text-align:right;font-size:.72rem;color:var(--muted);margin-top:.9rem}
+  .note{font-size:.8rem;color:var(--muted);margin-top:1rem}
+
+  /* LEARN */
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+  .head-row p{color:var(--muted);font-size:.9rem}
+  .learn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+  .learn{background:#edeae3;padding:1rem 1.5rem 1.8rem}
+  .learn .no{font-family:var(--serif);font-size:.85rem;color:#a39b8f;letter-spacing:.05em}
+  .learn .t{display:flex;align-items:center;gap:1.1rem;margin:.2rem 0 1.2rem}
+  .learn svg{width:32px;height:32px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .learn h4{font-family:var(--serif);font-size:1.35rem;font-weight:700;margin:0}
+  .learn .k{font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+  .learn ul{list-style:none;font-size:.85rem;color:#5b5147;line-height:2}
+  .learn li::before{content:"•";margin-right:.6rem;color:#8a8076}
+  .modules{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:3.5rem}
+  .module{background:#fff;border:1px solid rgba(156,122,62,.2)}
+  .module .pic{aspect-ratio:16/8;background:linear-gradient(150deg,#4a3e33,#1d1814);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:rgba(234,217,181,.35);font-size:3rem}
+  .module .pic img{width:100%;height:100%;object-fit:cover}
+  .module .body{padding:1.4rem 1.6rem}
+  .module h4{font-family:var(--serif);font-size:1.15rem}
+  .module p{color:var(--muted);font-size:.9rem}
+
+  /* AUDIENCE */
+  .aud-info{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.8rem}
+  .aud-info div{border:1px solid rgba(156,122,62,.35);padding:1.4rem 1.2rem;background:var(--paper)}
+  .aud-info h4{font-family:var(--serif);color:var(--gold-d);font-size:1.05rem;margin-bottom:.4rem}
+  .aud-info p{font-size:.85rem;color:#5b5147}
+  .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.2rem}
+  .aud{background:#ebe4d7;overflow:hidden}
+  .aud .pic{aspect-ratio:16/9}
+  .aud .pic img{width:100%;height:100%;object-fit:cover}
+  .aud .body{padding:1.1rem 1rem 1.3rem;text-align:center}
+  .aud h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:.4rem}
+  .aud small{display:block;color:#6b6157;font-size:.8rem;line-height:1.9}
+
+  /* SESSIONS */
+  .sessions{background:#151e29;text-align:center}
+  .sessions h2{color:#f2e7d2}
+  .sess-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:820px;margin:2rem auto 0}
+  .sess{border:1px solid var(--line);padding:2rem;background:rgba(255,255,255,.03)}
+  .sess .city{font-family:var(--serif);font-size:1.4rem;color:#f2e7d2}
+  .sess .city small{font-family:var(--serif);letter-spacing:.2em;color:var(--gold);margin-left:.4rem;font-size:.85rem}
+  .sess .date{font-family:var(--serif);font-size:2rem;color:var(--gold2);margin:.4rem 0}
+  .sess p{color:#c8bba3;font-size:.9rem;margin-bottom:1.2rem}
+
+  /* PRICE */
+  .price .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;margin-top:1.6rem}
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .pcard{background:#fff;border:1px solid rgba(156,122,62,.25);padding:2rem 1.4rem;text-align:center;position:relative}
+  .pcard.hot{border:2px solid var(--gold)}
+  .pcard.hot::before{content:"限時優惠";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:.75rem;padding:.1rem .8rem;letter-spacing:.15em}
+  .pcard h4{font-family:var(--serif);color:var(--muted);font-weight:600}
+  .pcard .amt{font-family:var(--serif);font-size:2.2rem;font-weight:700;margin:.6rem 0}
+  .pcard .amt small{font-size:1rem;margin-right:.3rem}
+  .pcard p{font-size:.8rem;color:var(--muted)}
+  .info{list-style:none;display:grid;gap:.8rem}
+  .info li{display:flex;gap:.8rem;align-items:center;border-bottom:1px solid rgba(156,122,62,.15);padding-bottom:.8rem}
+  .info b{font-family:var(--serif);color:var(--gold-d);width:3rem;flex:none}
+  .info svg,.limit svg{width:20px;height:20px;flex:none;stroke:var(--gold-d);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-top:.15rem}
+  .limit{display:flex;gap:.6rem;align-items:center;margin-top:1.2rem;background:#fff6e3;border:1px solid var(--gold);padding:.8rem 1rem;font-size:.9rem}
+
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1.6rem;margin-top:1.8rem;align-items:start}
+  details{background:#faf8f3;border:1px solid rgba(0,0,0,.12);padding:1.1rem 1.4rem}
+  summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.95rem}
+  summary::-webkit-details-marker{display:none}
+  summary b{font-family:var(--serif);font-size:1.6rem;color:var(--ink);margin-right:.9rem;line-height:1;vertical-align:middle}
+  summary::after{content:"+";color:var(--ink);font-size:1.3rem;font-weight:300}
+  details[open] summary::after{content:"−"}
+  details p{margin:.8rem 0 0 2.6rem;color:#5b5147;font-size:.9rem}
+  .faq-link{font-size:.9rem;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:.2rem}
+
+  /* FOOTER */
+  footer{background:#151e29;color:#c9c3b8;padding:56px 0 26px}
+  .foot{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:3.5rem}
+  .brand-wrap{display:flex;align-items:center;gap:1.4rem}
+  .foot .brand{font-family:var(--serif);font-weight:700;font-size:2.4rem;color:#f3ede2;letter-spacing:.06em;line-height:1.1;white-space:nowrap}
+  .foot .brand small{display:block;font-family:var(--serif);font-size:.72rem;letter-spacing:.3em;color:var(--gold);font-weight:500;margin-top:.3rem}
+  .brand-sub{border-left:1px solid rgba(201,164,99,.5);padding-left:1.2rem;font-size:.78rem;letter-spacing:.06em;white-space:nowrap}
+  .foot-nav{display:flex;gap:1.8rem;justify-content:center;font-size:.8rem}
+  .foot-nav a{white-space:nowrap}
+  .foot-nav a:hover,.social a:hover{color:var(--gold2)}
+  .social{display:flex;gap:1.1rem}
+  .social svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .foot .q{font-family:var(--serif);line-height:2.1;letter-spacing:.15em;font-size:.82rem;transform:rotate(-3deg);white-space:nowrap}
+  .foot .q span{margin:0 .6rem}
+  .foot .q i{font-family:var(--serif);font-style:normal;font-size:1.1rem;color:#e9e1d2}
+  .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-top:1.2rem;font-size:.72rem;color:#8d8a84;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .copy .mail{text-decoration:underline;margin-left:1.4rem}
+
+  /* fade-in */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+  .reveal.show{opacity:1;transform:none}
+
+  /* RWD */
+ @media (max-width:960px){
+  .menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--dark);padding:1rem 0}
+  .menu.open{display:flex}
+  .menu a{display:block;border:none;padding:.8rem 5%}
+  .burger{display:block}
+  .hero-inner,.pain .grid,.line-sec .box,.teacher .grid,.price .grid,.modules,.sess-grid,.fb-grid,.faq-grid{grid-template-columns:1fr}
+  .hero-photo{left:0;right:0;opacity:.35;-webkit-mask-image:none;mask-image:none}
+  .signature{grid-column:auto;grid-row:auto;justify-self:start;text-align:left;padding:1rem 5% 0;order:2}
+  .stats .wrap,.learn-grid,.aud-grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none}
+  section{padding:64px 0}
+  .aud-info{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr;gap:1.6rem}
+  .foot-nav{justify-content:flex-start}
+  .hero-text{grid-column:auto;grid-row:auto;justify-self:start;padding:0 5%}
+  .teacher-side{border-left:none;padding-left:0}
+  .teacher-photo img{-webkit-mask-image:none;mask-image:none}
+}
+  @media (max-width:520px){
+    .prices,.learn-grid,.aud-grid,.creds{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text"><b>BERYL HUANG</b><small>See People. Make Better Decisions.</small></span>
+    </a>
+    <button class="burger" aria-label="選單" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
+    <ul class="menu">
+      <li><a href="#highlight">課程亮點</a></li>
+      <li><a href="#teacher">講師介紹</a></li>
+      <li><a href="#learn">課程內容</a></li>
+      <li><a href="#audience">適合對象</a></li>
+      <li><a href="#faq">常見問題</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+  <div class="hero-photo"></div>
+<div class="hero-inner">
+  <!-- 左：簽名（疊在照片下方） -->
+  <div class="signature">
+    <span class="sig">Beryl Huang</span>
+    <div class="name">黃逸凡 Beryl Huang</div>
+    <div class="title">行為分析與側寫專家</div>
+  </div>
+
+  <!-- 右：主要文字 -->
+  <div class="hero-text">
+    <span class="badge">社會大學｜人性必修系列</span>
+    <div class="course">《看懂人｜Beryl 識人決策學》</div>
+    <div class="sub">台灣實體一日工作坊</div>
+    <h1>看錯一個人，<br>可能比做錯一個決策更貴。</h1>
+    <div class="tags">行為側寫<span>×</span>肢體語言<span>×</span>筆跡行為觀察</div>
+    <div class="tags-sub">建立一套不只靠直覺的識人判斷框架</div>
+    <div class="hero-cta">
+      <a href="#price" class="btn btn-gold">立即報名・搶先登記 →</a>
+      <span class="hero-date"></span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========== STATS ========== -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat">
+      <svg viewBox="0 0 24 24"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>
+      <div><b>20+ 年</b><small>美國行為研究與實務經驗</small></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 9l2-5 16 2-1 3M8 5l2 3.5M13 5.5l2 3.3"/></svg>
+      <div><b>好萊塢影視</b><small>投資製作經驗</small></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+      <div><b>FBI・LAPD</b><small>美國執法相關行為分析培訓經驗</small></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3 3 16 0 19M12 2.5c-3 3-3 16 0 19"/></svg>
+      <div><b>國際視野 × 實戰經驗</b><small>專業讓你看見更多可能</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAIN ========== -->
+<section class="pain" id="highlight">
+  <div class="wrap grid">
+    <div class="reveal">
+      <div class="eyebrow">See People Clearly · Make Better Decisions</div>
+      <h2>我們一生中最昂貴的錯誤，<br>很多時候不是做錯事，而是看錯人。</h2>
+      <p>這些年，我在不同國家、不同文化與不同專業領域之間工作，看過太多人因為看錯人、信錯人、判斷錯誤，而付出極大的代價。輕則浪費時間、消耗感情；重則可能賠上一段關係、一個事業，甚至多年累積的心血。</p>
+      <p style="margin-top:.8rem;font-weight:700">你是不是也曾經在這些時刻，懷疑過自己的眼光？</p>
+      <div class="scenes">
+        <div class="scene"><b>職場</b>話說得漂亮的下屬或同事，關鍵時刻卻臨陣脫逃，甚至背後捅刀。</div>
+        <div class="scene"><b>商業</b>合夥人或客戶笑臉迎人、承諾滿滿，你卻隱約覺得哪裡不對勁。</div>
+        <div class="scene"><b>感情</b>一次次選擇相信對方說的話，最後才發現自己忽略了早已出現的訊號。</div>
+        <div class="scene"><b>人際</b>不懂得辨識界線與操控，一不小心就被情緒、關係與話術牽著走。</div>
+      </div>
+    </div>
+    <div class="pain-visual reveal">
+      <blockquote>「人性」<br>一直都在。<br>只是你看不看得懂。</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LINE ========== -->
+<section class="cream line-sec">
+  <div class="wrap box">
+    <div class="reveal">
+      <div class="eyebrow">Free Observation Guide · 免費觀察指南</div>
+      <h2>加入社會大學／人生必修課 系列，<br>從看懂 7 個行為線索開始。</h2>
+      <p style="color:var(--muted);margin-bottom:1.6rem">加入官方 LINE，了解課程資訊與最新消息。</p>
+      <a href="https://lin.ee/R8iMXY8" class="btn btn-line"><span class="line-tag">LINE</span>加入 LINE・免費領取 7 個行為觀察線索 →</a>
+    </div>
+    <div class="qr-card reveal">
+      <span class="line-tag" style="background:#06c755;color:#fff">LINE</span>
+      <h3 style="margin-top:.8rem">你的識人練習，<br>從這裡開始。</h3>
+      <div class="qr"><img src="images/line-qr.jpg" alt="LINE 官方帳號 QR Code"></div>
+      <small style="color:var(--muted)">社會大學／人生必修課 系列<br>使用手機掃描 QR Code 即可加入官方 LINE</small>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TEACHER ========== -->
+<section class="dark teacher" id="teacher">
+  <div class="wrap grid">
+    <div class="teacher-photo reveal"></div>
+    <div class="reveal">
+      <div class="eyebrow">Meet Your Instructor</div>
+      <h3>Beryl Huang<small>黃逸凡</small></h3>
+      <div class="role">行為分析與側寫專家</div>
+      <p>擁有 20 年以上美國行為研究與實務經驗，曾參與美國執法相關之行為分析培訓，並具備好萊塢影視投資製作經驗。</p>
+      <p>多年在不同國家、文化與專業領域之間工作，將實務經驗重新整理成「社會大學｜人生必修課 101」系列課程，帶你建立一套可以帶回工作、商業、人際與關係裡持續使用的觀察方法。</p>
+      <div class="creds">
+        <div class="cred"><b>20+ 年</b><small>美國行為研究與實務經驗</small></div>
+        <div class="cred"><b>FBI・LAPD</b><small>執法相關行為分析培訓經驗</small></div>
+        <div class="cred"><b>好萊塢影視</b><small>投資製作經驗</small></div>
+        <div class="cred"><b>國際視野</b><small>跨國、跨文化實戰經驗</small></div>
+      </div>
+      <div class="sig">Beryl Huang</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEO ========== -->
+<section class="paper" style="text-align:center">
+  <div class="wrap reveal">
+    <div class="eyebrow">Watch the Interview</div>
+    <h2>一場關於人性與潛意識的深度對談</h2>
+    <p style="color:var(--muted)">「老師，你到底什麼時候要再開實體課？」</p>
+    <div class="video-box">
+      <!-- 把下面 VIDEO_ID 換成 YouTube 影片網址 watch?v= 後面那串 -->
+      <iframe src="https://www.youtube.com/embed/9GuD6uxuAk0" title="訪談影片" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEEDBACK ========== -->
+<section class="fb-sec" id="feedback">
+  <div class="wrap">
+    <div class="head-row reveal" style="align-items:center">
+      <div>
+        <h2 style="margin:.3rem 0 .4rem">上完課，他們帶走了什麼？</h2>
+        <p class="fb-sub">從指定公開貼文的學員留言中，挑選與課程體驗最相關的 10 則重點整理。</p>
+      </div>
+    </div>
+
+    <div class="fb-grid">
+      <div class="fb reveal"><p>教學深入淺出、案例幽默，重點不在貼標籤，而是把善傳遞下去；是非常充實的一天。</p><b>曹○銘</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>收穫遠超預期。不只學看人的技巧，也更誠實地看見自己，能帶回人際互動與決策中持續練習。</p><b>W○○○e H○○○o</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>第二次上課依然滿滿乾貨，從生活軌跡透露的訊息中，得到不同的觀察視角與更有意義的理解。</p><b>B○○ Y○ C○○○g</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>從筆跡到肢體語言，許多細節原來都有脈絡可循；內容精彩到怕漏聽，只想專心看又不停做筆記。</p><b>K○ C○○n</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>除了筆跡與肢體辨識，更被老師面對問題的態度、正向思考，以及看見與支持他人的品質打動。</p><b>Y○○○n N○○n</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>筆跡幫助重新認識自己，肢體語言則練習識人與讀懂情境；是一門實用、有溫度，也引人反思的課。</p><b>凰○</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>從書寫理解性格，也學會在溝通中掌握進退、建立邊界與保護自己；整堂課生動有趣、一下就過了。</p><b>黃○慈</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>老師把複雜概念說得清楚、有邏輯，再用案例帶著練習；一整天扎實、安心，而且很值得推薦。</p><b>徐○婷</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>得到的不只是知識，更是一場觀念與視角的洗禮；學會調整溝通方式，以理解取代批判。</p><b>C○○○n C○○n</b><small>公開留言重點整理</small></div>
+      <div class="fb reveal"><p>一整天精彩到捨不得分心。開始讀懂筆跡、表情與肢體語言背後的意義，也期待繼續上進階課程。</p><b>T○○y L○e</b><small>公開留言重點整理</small></div>
+    </div>
+    <p class="fb-note">以上為學員的公開留言，完整原文請見原貼文。</p>
+  </div>
+</section>
+
+<!-- ========== LEARN ========== -->
+<section id="learn">
+  <div class="wrap">
+  <div class="head-row reveal">
+  <h2 style="margin:0">這一天，你將學會</h2>
+  <p>從觀察到判斷，建立屬於你的識人能力。</p>
+</div>
+
+<div class="learn-grid">
+  <div class="learn reveal">
+    <div class="no">01</div>
+    <div class="t">
+      <svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <h4>觀察</h4>
+    </div>
+    <div class="k">行為觀察的基本功</div>
+    <ul><li>什麼值得注意？</li><li>什麼只是雜訊？</li><li>如何避免先入為主？</li></ul>
+  </div>
+
+  <div class="learn reveal">
+    <div class="no">02</div>
+    <div class="t">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.5"/><path d="M3 21v-1a6 6 0 0 1 12 0v1"/><path d="M16 4a3.5 3.5 0 0 1 0 7M18 14.5a6 6 0 0 1 3 5.5v1"/></svg>
+      <h4>非語言訊息</h4>
+    </div>
+    <div class="k">身體比嘴巴更早透露訊號</div>
+    <ul><li>姿勢・距離・方向</li><li>動作改變・情緒反應</li><li>看變化與脈絡</li></ul>
+  </div>
+
+  <div class="learn reveal">
+    <div class="no">03</div>
+    <div class="t">
+      <svg viewBox="0 0 24 24"><path d="M17 3l4 4L8 20H4v-4z"/><path d="M14 6l4 4"/></svg>
+      <h4>筆跡與簽名</h4>
+    </div>
+    <div class="k">從留下來的痕跡理解人</div>
+    <ul><li>字跡・結構・空間</li><li>書寫習慣與簽名特徵</li><li>形成觀察線索</li></ul>
+  </div>
+
+  <div class="learn reveal">
+    <div class="no">04</div>
+    <div class="t">
+      <svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 0 0-5.6-1.5A3 3 0 0 0 4 8a3 3 0 0 0-1 5.5A3.5 3.5 0 0 0 7 19a3 3 0 0 0 5 1z"/><path d="M12 5a3 3 0 0 1 5.6-1.5A3 3 0 0 1 20 8a3 3 0 0 1 1 5.5A3.5 3.5 0 0 1 17 19a3 3 0 0 1-5 1z"/><path d="M12 5v15"/></svg>
+      <h4>判斷</h4>
+    </div>
+    <div class="k">把零碎線索拼成人</div>
+    <ul><li>觀察 → 比較 → 找出偏差</li><li>建立假設 → 再驗證</li><li>做出更好的決策</li></ul>
+  </div>
+</div>
+
+    <div class="head-row reveal" style="margin-top:4rem">
+      <h2 style="margin:0">兩大實戰模組，一天帶走判斷框架</h2>
+    </div>
+    <div class="modules" style="margin-top:1.4rem">
+      <div class="module reveal">
+        <div class="pic"><img src="images/handwriting.jpg" alt="筆跡簽名辨識"></div>
+        <div class="body"><h4>筆跡簽名辨識 Vol. 1</h4>
+          <p>從字跡、簽名的書寫習慣中，看見一個人可能透露的特質與值得注意的線索，現場拆解實例。</p></div>
+      </div>
+      <div class="module reveal">
+        <div class="pic"><img src="images/body.jpg" alt="肢體語言辨識"></div>
+        <div class="body"><h4>肢體語言辨識 Vol. 1</h4>
+          <p>透過實際案例與可直接操作的觀察方法，練習辨識動作、姿態與下意識反應裡的不一致。</p></div>
+      </div>
+    </div>
+    <p class="note" style="text-align:center">有些東西可以在線上教；觀察力，必須在現場練。</p>
+  </div>
+</section>
+
+<!-- ========== AUDIENCE ========== -->
+<section class="cream" id="audience">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2 style="margin:0">這堂課適合這樣的你</h2>
+      <p style="text-align:left">無論你的職業是什麼，<br>總一定需要好好看人、好好交流。</p>
+    </div>
+
+    <div class="aud-info reveal">
+      <div><h4>誰適合</h4><p>常需要判斷合作、用人、談判或人際關係的人。</p></div>
+      <div><h4>零基礎也能學</h4><p>從生活情境與案例演練開始，不需要心理學背景。</p></div>
+      <div><h4>課後怎麼用</h4><p>帶回面試、合作、溝通與日常互動，先交叉驗證再做決策。</p></div>
+    </div>
+
+    <div class="aud-grid">
+      <div class="aud reveal"><div class="pic"><img src="images/aud1.jpg" alt=""></div>
+        <div class="body"><h4>曾經因為看錯人付出代價的人</h4><small>合作・感情・職場<br>想建立更清楚的判斷框架</small></div></div>
+      <div class="aud reveal"><div class="pic"><img src="images/aud2.jpg" alt=""></div>
+        <div class="body"><h4>單純對「人」非常好奇的人</h4><small>想理解互動背後的訊號<br>讓觀察成為日常能力</small></div></div>
+      <div class="aud reveal"><div class="pic"><img src="images/aud3.jpg" alt=""></div>
+        <div class="body"><h4>需要判斷人的人</h4><small>管理者・企業主・主管<br>HR・業務・談判者</small></div></div>
+      <div class="aud reveal"><div class="pic"><img src="images/aud4.jpg" alt=""></div>
+        <div class="body"><h4>經常與陌生人打交道的人</h4><small>顧問・服務業・業務<br>教育及專業工作者</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SESSIONS ========== -->
+<section class="sessions dark">
+  <div class="wrap reveal">
+    <div class="eyebrow">Schedule</div>
+    <h2>10/17 台北首場</h2>
+    <div class="sess-grid">
+      <div class="sess">
+        <div class="city">台北<small>TAIPEI</small></div>
+        <div class="date">10.17（六）</div>
+        <p>一日實體工作坊・09:00–17:00</p>
+        <span class="btn btn-ended">活動已結束</span>
+      </div>
+      <div class="sess">
+        <div class="city">台中／高雄<small>COMING SOON</small></div>
+        <div class="date">優先登記</div>
+        <p>如果你一直在等我再開課，現在，台中、高雄可以登記囉！</p>
+        <a href="https://lin.ee/R8iMXY8" class="btn btn-gold">填寫優先登記表單 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICE ========== -->
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="eyebrow">Tuition</div>
+    <h2>課程售價</h2>
+    <div class="grid">
+      <div class="prices reveal">
+        <div class="pcard hot">
+          <h4>早鳥優惠</h4>
+          <div class="amt"><small>NT$</small>9,800</div>
+          <p>早鳥優惠至 ○/○ 止</p>
+          <a href="#" class="btn btn-gold" style="margin-top:1.2rem;font-size:.9rem;padding:.7rem 1.4rem">早鳥報名</a>
+        </div>
+        <div class="pcard">
+          <h4>一日實體課程</h4>
+          <div class="amt"><small>NT$</small>12,800</div>
+          <p>原價</p>
+          <a href="#" class="btn btn-dark" style="margin-top:1.2rem;font-size:.9rem;padding:.7rem 1.4rem">一般報名</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <ul class="info">
+          <li><b>日期</b><span>2026.10.17（六）09:00–17:00</span></li>
+          <li><b>地點</b><span>台北市（正式地址於報名成功後通知）</span></li>
+          <li><b>形式</b><span>一日實體工作坊・現場實作與案例演練</span></li>
+          <li><b>課程</b><span>筆跡簽名辨識 × 肢體語言辨識 Vol. 1</span></li>
+        </ul>
+        <div class="limit"><svg viewBox="0 0 24 24"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg><span><b>限額招生</b>｜為維持現場實作、案例演練與互動品質，本課採限額招生。</span></div>
+        <a href="https://lin.ee/R8iMXY8" target="_blank" class="btn btn-line" style="margin-top:1.2rem;width:100%;justify-content:center"><span class="line-tag">LINE</span>加入「社會大學／人生必修課 系列」</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="cream" id="faq">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2 style="margin:0">常見問題</h2>
+      <a href="https://lin.ee/R8iMXY8" class="faq-link">其他課程相關資訊請加入官方 LINE ↗</a>
+    </div>
+    <div class="faq-grid">
+      <details><summary><span><b>Q</b>完全沒有心理學背景可以上嗎？</span></summary>
+      <p>可以。課程從生活情境與案例演練開始，不需要任何心理學背景。</p></details>
+      <details><summary><span><b>Q</b>課後可以用在哪些情境？</span></summary>
+      <p>面試、合作、談判、溝通與日常人際互動。學會先觀察、交叉驗證，再做決策。</p></details>
+      <details><summary><span><b>Q</b>上課地點在哪裡？</span></summary>
+      <p>台北市。正式地址與報到資訊，會在確認報名後另行通知。</p></details>
+      <details><summary><span><b>Q</b>會教我判斷別人有沒有說謊嗎？</span></summary>
+      <p>這堂課不談玄學，也不教讀心。我們練習的是觀察言行是否一致、辨識值得注意的訊號，並避免因為自己的期待與直覺太快下結論。</p></details>
+      <details><summary><span><b>Q</b>可以申請退費嗎？</span></summary>
+      <p>【請填入退費規定】</p></details>
+      <details><summary><span><b>Q</b>需要準備什麼？</span></summary>
+      <p>【請填入，例如：筆記用具、自己的簽名樣本等】</p></details>
+      <details><summary><span><b>Q</b>有包含課後教材嗎？</span></summary>
+      <p>有。確認報名後，隨課附贈「識人教戰應用手冊」，包含重點整理、觀察檢核與延伸練習。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand-wrap">
+        <div class="brand">社會大學<small>UNIVERSITY OF LIFE</small></div>
+        <span class="brand-sub">人生必修課系列101</span>
+      </div>
+
+      <nav class="foot-nav">
+        <a href="#learn">課程介紹</a>
+        <a href="#teacher">講師介紹</a>
+        <a href="#feedback">學員回饋</a>
+      </nav>
+
+      <div class="social">
+        <a href="https://www.facebook.com/DrBerylHuang?locale=zh_TW" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></a>
+        <a href="https://lin.ee/R8iMXY8" aria-label="LINE"><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9l.4 2.6 3.3-2.7C18.6 18 22 14.8 22 11c0-4.4-4.5-8-10-8z"/><text x="12" y="13.2" text-anchor="middle" font-size="5" font-family="Noto Sans TC,sans-serif" font-weight="700" fill="currentColor" stroke="none">LINE</text></svg></a>
+      </div>
+
+      <div class="q">人一直都在透露自己，<br>在相信一個人以前，<br>多看懂一點。<span>—</span><i>Beryl Huang</i></div>
+    </div>
+
+    <div class="copy">
+      <span><a href="mailto:Unioflifeinfo@gmail.com" class="mail">客服信箱：Unioflifeinfo@gmail.com</a></span>
+      <span>© 2026 社會大學｜人生必修課系列101</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  // 捲動淡入
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // 手機版點選單後自動收起
+  document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () =>
+    document.querySelector('.menu').classList.remove('open')));
+  // 往下捲時標題列變色
+  const header = document.querySelector('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+</body>
+</html>
